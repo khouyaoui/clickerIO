@@ -5,7 +5,8 @@ Mostrar la media de clicks por usuario => cliente y servidor <br />
 Mostrar la cantidad de usuarios conectados => servidor <br />
 Añadir un botón o mecanismo para reiniciar el contador => cliente y servidor <br />
 numeros conectados actualmente => servidor <br />
-
+<br />
+<br />
 Haced el deploy en heroku: <br />
 app: https://clickerdo.herokuapp.com <br />
 repo: https://github.com/khouyaoui/clickerIO <br />
