@@ -5,14 +5,15 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http, {
     cors: {origin: "*"},
 });
+
 const cors = require("cors");
 app.use(cors());
 
 app.use(express.static("public"));
+//let numClicksUserText = document.getElementById("clicksUser");
 
 let usersConnected = 0;
 let numClicks = 0;
-let numClicksUser = 0;
 let countUsersConnected = 0;
 // escuchar conexiones
 io.on("connection", (socket) => {
@@ -28,8 +29,8 @@ io.on("connection", (socket) => {
 
     socket.on("click", () => {
         numClicks++;
-        numClicksUser++;
         io.emit("new click", {
+
             numClicks,
         });
     });
@@ -47,8 +48,7 @@ io.on("connection", (socket) => {
 
     socket.on("reset", () => {
         numClicks = 0;
-        numClicksUser = 0;
-        countUsersConnected = 0;
+        //countUsersConnected = 0;
     });
 });
 
