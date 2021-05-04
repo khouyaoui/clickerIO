@@ -1,43 +1,27 @@
-let text = document.querySelector("#chat");
 let sendButton = document.querySelector("#sendButton");
-let textMessage = document.querySelector("#textMessage");
+let resetButton = document.querySelector("#resetButton");
 
 let usersConnected = document.getElementById("counter");
 let numClicksText = document.getElementById("clicksTxt");
+let countUsersConnected = document.getElementById("connectedUsers");
+
+
+let numClicksUserText = document.getElementById("clicksUser");
+
 
 const urlParams = new URLSearchParams(window.location.search);
 
+
 const socket = io();
 
-socket.on("message", (data) => {
-    const d = document.createElement("div");
-    const t = document.createTextNode(data.username + ": " + data.message);
-    d.appendChild(t);
-    text.appendChild(d);
-});
-
 socket.on("usuario conectado", (data) => {
-    const d = document.createElement("div");
-    d.classList.add("joined");
-    const t = document.createTextNode(
-        "El usuario " + data.username + " se ha conectado"
-    );
-    d.appendChild(t);
-    text.appendChild(d);
-
     usersConnected.innerText = data.usersConnected;
+    countUsersConnected.innerText = data.usersConnected;
 });
 
-socket.on("usuario desconectado", (data) => {
-    const d = document.createElement("div");
-    d.classList.add("joined");
-    const t = document.createTextNode(
-        "El usuario " + data.username + " se ha desconectado!"
-    );
-    d.appendChild(t);
-    text.appendChild(d);
-
+socket.on("Udisconnect", (data) => {
     usersConnected.innerText = data.usersConnected;
+    countUsersConnected.innerText = data.countUsersConnected;
 });
 
 socket.on("connect", () => {
@@ -47,7 +31,11 @@ socket.on("connect", () => {
 socket.on("numero de usuarios", (data) => {
     usersConnected.innerText = data.usersConnected;
     numClicksText.innerHTML = data.numClicks;
+    countUsersConnected.innerText = data.countUsersConnected;
+
 });
+
+
 socket.on("new click", (data) => {
     numClicksText.innerText = data.numClicks;
 });
@@ -55,3 +43,9 @@ socket.on("new click", (data) => {
 sendButton.onclick = () => {
     socket.emit("click", "");
 };
+
+resetButton.onclick = () => {
+    numClicksText.innerText = '0';
+    numClicksUserText.innerText = '0';
+    socket.emit("reset","");
+}

@@ -1,37 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Socke.io Client Example</title>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Socket.io clicks counter</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Nunito", sans-serif;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Nunito", sans-serif;
+        }
 
-            .game {
-                display: flex;
-                flex-direction: row;
-                gap: 3em;
-            }
-        </style>
+        .game {
+            display: flex;
+            flex-direction: row;
+            gap: 3em;
+            padding: 10px;
+        }
 
-        <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
-        <script defer src="app.js"></script>
-    </head>
-    <body>
-        <div id="app">
-            <h1>Master.Click.io <small id="counter">0</small></h1>
-            <div class="game">
-                <button id="sendButton">Enviar</button>
-                <div id="clicksTxt"></div>
-            </div>
-        </div>
-    </body>
+        .connectedUsers_ {
+            display: flex;
+             position: fixed;
+             bottom: 0;
+             padding: 10px;
+             gap: 3em;
+
+        }
+
+        .resetBtn{
+            background-color: darkred; / * * Verde /
+            border: none;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            padding: 2px;
+            border-radius: 10%;
+        }
+
+
+    </style>
+
+    <script src="https://cdn.socket.io/socket.io-3.0.0.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>Master.Click.io ID unico: <small>PLAYER00</small><small id="counter">0</small><small>CK2</small></h1>
+    <div class="game">
+        <button id="sendButton">click click click</button>
+    </div>
+
+    <div class="game">
+        <div>Total clicks:</div>
+        <div id="clicksTxt"></div>
+    </div>
+
+    <div class="game">
+        <div>Clicks del usuario:</div>
+        <div id="clicksUser"></div>
+    </div>
+
+    <div class="game">
+        <div>Media clicks del usuario:</div>
+        <div id="MediaclicksUser"></div>
+    </div>
+
+    <div class="game">
+        <button class="resetBtn" id="resetButton">Reiniciar</button>
+    </div>
+
+    <div class="connectedUsers_">
+        <div >Usuarios conectados:</div>
+        <div ><small id="connectedUsers">0</small></div>
+    </div>
+
+</div>
+</body>
 </html>
