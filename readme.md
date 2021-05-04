@@ -6,6 +6,6 @@ Mostrar la cantidad de usuarios conectados => servidor <br />
 Añadir un botón o mecanismo para reiniciar el contador => cliente y servidor <br />
 numeros conectados actualmente => servidor <br />
 
-Haced el deploy en heroku:
-app: https://clickerdo.herokuapp.com
-repo: https://github.com/khouyaoui/clickerIO
+Haced el deploy en heroku: <br />
+app: https://clickerdo.herokuapp.com <br />
+repo: https://github.com/khouyaoui/clickerIO <br />
